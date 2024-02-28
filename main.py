@@ -46,13 +46,10 @@ async def predict(file: UploadFile = File(...)):
     predicted_class = CLASS_NAMES[predicted_class_index]
     confidence = float(predictions[0][predicted_class_index])
 
-    def truncate(n, decimals=0):
-        multiplier = 10**decimals
-        return int(n * multiplier) / multiplier
 
     return {
         'class': predicted_class,
-        'confidence': truncate(confidence,2)
+        'confidence': confidence
     }
 
 
